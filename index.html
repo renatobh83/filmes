@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leitor M3U</title>
+  <style>
+    #output {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .video-link {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 150px; /* Adicione uma largura máxima ao contêiner */
+    }
+
+    .logo-image {
+      max-width: 100px;
+      height: auto;
+      background-color: #f0f0f0;
+      padding: 5px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .video-title {
+      margin: 0;
+      text-align: center; /* Centraliza o texto dentro do contêiner */
+      font-size: 12px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+  <input type="file" id="fileInput" />
+  <!-- <div>
+    <input type="text" id="searchInput" placeholder="Pesquisar..." oninput="searchItems()" />
+  </div> -->
+  <div id="output"></div>
+
+  <script src="app.js"></script>
+  <script>
+    function searchItems() {
+      const searchTerm = $('#searchInput').val().toLowerCase();
+      $('.video-link').each(function() {
+        const text = $(this).text().toLowerCase();
+        const isVisible = $(this).is(':visible');
+        $(this).toggle(text.includes(searchTerm) && isVisible);
+      });
+    }
+  </script>
+</body>
+</html>
